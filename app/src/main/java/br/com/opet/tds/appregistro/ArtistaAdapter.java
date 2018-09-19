@@ -1,6 +1,7 @@
 package br.com.opet.tds.appregistro;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

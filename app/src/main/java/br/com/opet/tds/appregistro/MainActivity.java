@@ -1,6 +1,7 @@
 package br.com.opet.tds.appregistro;
 
 import android.app.Activity;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,9 +29,16 @@ public class MainActivity extends Activity {
         editNome = findViewById(R.id.editNome);
         spinnerGenero = findViewById(R.id.spinnerGenero);
         listArtista = findViewById(R.id.listArtista);
+        atualizarArtistas();
+    }
 
-        adapter = new ArtistaAdapter (getApplicationContext(),R.layout.artista_item,artistas);
-        listArtista.setAdapter(adapter);
+    private void atualizarArtistas(){
+        if(adapter == null) {
+            adapter = new ArtistaAdapter(getApplicationContext(), R.layout.artista_item, artistas);
+            listArtista.setAdapter(adapter);
+        }else{
+            adapter.notifyDataSetChanged();
+        }
     }
 
     public void salvarArtista(View v){
@@ -41,6 +49,6 @@ public class MainActivity extends Activity {
         a.setGenero(genero);
 
         artistas.add(a);
-        adapter.notifyDataSetChanged();
+        atualizarArtistas();
     }
 }
