@@ -14,65 +14,50 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private List<Filme> filmes;
-    private EditText editFilme;
-    private EditText editGenero;
-    private EditText editNota;
-    private ListView listFilmes;
-    private ArrayAdapter<Filme> adapter;
+    private List<Produto> produtos;
+    private EditText editProduto;
+    private EditText editCategoria;
+    private EditText editQuant;
+    private EditText editValor;
+    private ListView listProdutos;
+    private ArrayAdapter<Produto> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        filmes = new ArrayList<>();
-        editFilme = findViewById(R.id.editFilme);
-        editGenero = findViewById(R.id.editGenero);
-        editNota = findViewById(R.id.editNota);
-        listFilmes = findViewById(R.id.listFilme);
-        atualizarFilmes();
+        produtos = new ArrayList<>();
+        editProduto = findViewById(R.id.editProduto);
+        editCategoria = findViewById(R.id.editCategoria);
+        editQuant = findViewById(R.id.editQuant);
+        editValor = findViewById(R.id.editValor);
+        listProdutos = findViewById(R.id.listFilme);
+        atualizarProdutos();
     }
 
-    private void atualizarFilmes(){
+    private void atualizarProdutos(){
         if(adapter == null) {
-            adapter = new FilmeAdapter(getApplicationContext(), R.layout.filme_item, filmes);
-            listFilmes.setAdapter(adapter);
+            adapter = new ProdutoAdapter(getApplicationContext(), R.layout.produto_item, produtos);
+            listProdutos.setAdapter(adapter);
         }else{
             adapter.notifyDataSetChanged();
         }
     }
 
-    public void salvarFilme(View v){
-        String nome = editFilme.getText().toString();
-        String genero = editGenero.getText().toString();
-        int nota = Integer.parseInt(editNota.getText().toString());
+    public void salvarProduto(View v){
+        String nome = editProduto.getText().toString();
+        String categoria = editCategoria.getText().toString();
+        int quant = Integer.parseInt(editQuant.getText().toString());
+        Double valor = Double.parseDouble(editValor.getText().toString());
 
-        if(nota > 0 && nota <= 5){
+        Produto a = new Produto();
+        a.setNome(nome);
+        a.setCategoria(categoria);
+        a.setQuantidade(quant);
+        a.setValor(valor);
 
-            Filme a = new Filme();
-            a.setNome(nome);
-            a.setGenero(genero);
-            a.setNota(nota);
-
-
-            filmes.add(a);
-
-            Collections.sort(filmes, new Comparator<Filme>() {
-                @Override
-                public int compare(Filme f1, Filme f2) {
-                    if (f1.getNota() < f2.getNota())
-                        return 1;
-                    if (f1.getNota() > f2.getNota())
-                        return -1;
-                    return 0;
-                }
-            });
-
-            while(filmes.size() > 10){
-                filmes.remove(filmes.size() - 1);
-            }
-            atualizarFilmes();
-        }
+        produtos.add(a);
+        atualizarProdutos();
     }
 }

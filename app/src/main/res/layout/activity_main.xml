@@ -8,29 +8,36 @@
     tools:context="br.com.opet.tds.appregistro.MainActivity">
 
     <EditText
-        android:id="@+id/editFilme"
+        android:id="@+id/editProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome do Filme" />
+        android:hint="Nome do Produto" />
 
     <EditText
-        android:id="@+id/editGenero"
+        android:id="@+id/editCategoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Genero" />
+        android:hint="Categoria" />
 
     <EditText
-        android:id="@+id/editNota"
+        android:id="@+id/editQuant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nota do Filme"
+        android:hint="Quantidade"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editValor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valor Unitário"
         android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/btnSalvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="salvarFilme"
+        android:onClick="salvarProduto"
         android:text="Salvar" />
 
     <ListView
