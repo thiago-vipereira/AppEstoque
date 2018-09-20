@@ -14,10 +14,10 @@ import java.util.List;
  * Created by Diego on 19/09/2018.
  */
 
-public class ArtistaAdapter extends ArrayAdapter<Artista> {
+public class FilmeAdapter extends ArrayAdapter<Filme> {
     private int rId;
 
-    public ArtistaAdapter(Context context, int resource, List<Artista> objects) {
+    public FilmeAdapter(Context context, int resource, List<Filme> objects) {
         super(context, resource, objects);
         this.rId = resource;
     }
@@ -31,13 +31,15 @@ public class ArtistaAdapter extends ArrayAdapter<Artista> {
             mView = inflater.inflate(rId,null);
         }
 
-        Artista artista = getItem(position);
+        Filme filme = getItem(position);
 
         TextView textNome = mView.findViewById(R.id.textNome);
         TextView textGenero = mView.findViewById(R.id.textGenero);
+        TextView textNota = mView.findViewById(R.id.textNota);
 
-        textNome.setText(artista.getNome());
-        textGenero.setText(artista.getGenero());
+        textNome.setText(filme.getNome());
+        textGenero.setText(filme.getGenero());
+        textNota.setText(filme.getNota()+"");
 
         return mView;
     }

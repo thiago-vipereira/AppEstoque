@@ -4,15 +4,17 @@ package br.com.opet.tds.appregistro;
  * Created by Diego on 19/09/2018.
  */
 
-public class Artista {
+public class Filme {
     private String nome;
     private String genero;
+    private int nota;
 
-    public Artista(){}
+    public Filme(){}
 
-    public Artista(String nome, String genero) {
+    public Filme(String nome, String genero, int nota) {
         this.nome = nome;
         this.genero = genero;
+        this.nota = nota;
     }
 
     public String getNome() {
@@ -29,5 +31,13 @@ public class Artista {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
     }
 }
